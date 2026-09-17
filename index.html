@@ -50,7 +50,7 @@
             font-size: 24px;
             margin-bottom: 8px;
         }
-        
+
         .mode-selector {
             display: flex;
             gap: 10px;
@@ -74,6 +74,10 @@
             background: linear-gradient(135deg, #5eb3f6 0%, #339af0 100%);
             color: white;
             border-color: #339af0;
+        }
+
+        .mode-btn:hover {
+            border-color: #5eb3f6;
         }
 
         .section {
@@ -136,7 +140,12 @@
             font-weight: 600;
             color: #333;
         }
-        
+
+        .question-input:focus {
+            border-color: #5eb3f6;
+            background-color: #f0f8ff;
+        }
+
         .button-group {
             display: flex;
             gap: 10px;
@@ -153,25 +162,92 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
+            font-family: 'Noto Sans KR', sans-serif;
         }
 
-        .btn-primary { background: linear-gradient(135deg, #5eb3f6 0%, #339af0 100%); color: white; }
-        .btn-secondary { background: #f0f0f0; color: #333; }
-        .btn-danger { background: #ff6b6b; color: white; }
+        .btn-primary {
+            background: linear-gradient(135deg, #5eb3f6 0%, #339af0 100%);
+            color: white;
+        }
 
-        .table-responsive { overflow-x: auto; }
-        table { width: 100%; border-collapse: collapse; font-size: 13px; }
-        th, td { padding: 12px; text-align: center; border: 1px solid #e0e0e0; }
-        th { background: #e3f2fd; color: #1565c0; font-weight: 600; }
-        tbody tr:hover { background-color: #f0f8ff; }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(83, 179, 246, 0.4);
+        }
 
-        .message { padding: 15px; border-radius: 8px; margin-bottom: 20px; font-weight: 600; }
-        .message.success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
-        .message.error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
-        .message.info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
 
-        .empty-state { text-align: center; padding: 40px; color: #999; }
-        .empty-state-icon { font-size: 48px; margin-bottom: 15px; }
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        .btn-danger {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #ee5a52;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+        }
+
+        th {
+            background: #e3f2fd;
+            color: #1565c0;
+            font-weight: 600;
+        }
+
+        tbody tr:hover {
+            background-color: #f0f8ff;
+        }
+
+        .message {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .message.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+        }
+
+        .empty-state-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
 
         .info-box {
             background: #fff3cd;
@@ -183,6 +259,7 @@
             color: #856404;
         }
 
+        /* 상세 모달 */
         .modal {
             display: none;
             position: fixed;
@@ -195,6 +272,7 @@
             justify-content: center;
             align-items: center;
         }
+
         .modal-content {
             background: white;
             border-radius: 10px;
@@ -205,12 +283,48 @@
             overflow-y: auto;
         }
 
+        /* 제출 완료 화면 스타일 */
+        .success-box {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .success-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+        .success-title {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        .success-desc {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
         @media (max-width: 768px) {
-            .card { padding: 20px; }
-            .header { flex-direction: column; text-align: center; }
-            table { font-size: 12px; }
-            th, td { padding: 8px; }
-            button { padding: 12px 20px; font-size: 14px; }
+            .card {
+                padding: 20px;
+            }
+
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+
+            button {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
@@ -226,8 +340,8 @@
 
         <div class="card">
             <div class="mode-selector">
-                <button class="mode-btn active" onclick="switchMode('student')">👨‍🎓 학생 모드</button>
-                <button class="mode-btn" onclick="switchMode('teacher')">👨‍🏫 선생님 모드</button>
+                <button class="mode-btn active" id="btn-student" onclick="switchMode('student', this)">👨‍🎓 학생 모드</button>
+                <button class="mode-btn" id="btn-teacher" onclick="switchMode('teacher', this)">👨‍🏫 선생님 모드</button>
             </div>
 
             <!-- 학생 모드 -->
@@ -251,6 +365,18 @@
                 </div>
             </div>
 
+            <!-- 제출 완료 화면 -->
+            <div id="successScreen" class="section">
+                <div class="success-box">
+                    <div class="success-icon">🎉</div>
+                    <h2 class="success-title">정답 제출이 완료되었습니다!</h2>
+                    <p class="success-desc">
+                        수고하셨습니다.<br>
+                        선생님의 채점 결과를 기다려주세요!
+                    </p>
+                </div>
+            </div>
+
             <!-- 선생님 모드 -->
             <div id="teacher" class="section">
                 <div id="teacherMessage"></div>
@@ -265,8 +391,8 @@
                 </div>
 
                 <div class="button-group" style="justify-content: flex-start;">
-                    <button class="btn-primary" onclick="gradeAllStudents()">📊 채점 및 데이터 불러오기</button>
-                    <button class="btn-danger" onclick="clearAllData()">🗑️ 구글 시트 초기화</button>
+                    <button class="btn-primary" onclick="gradeAllStudents()">📊 채점 및 불러오기</button>
+                    <button class="btn-danger" onclick="clearAllData()">🗑️ 모든 데이터 삭제</button>
                 </div>
 
                 <div style="margin-top: 40px;">
@@ -289,16 +415,14 @@
 
     <script>
         // ==========================================
-        // ⚠️ 아래 빈칸("https://script.google.com/macros/s/AKfycbxLgee7qbin4gNLniZH_3QyJIhONdD-sRJ_j5FfNbj3vDU9P_B9Hlb5SMkWnozaxdhc/exec")에 
-        // 1번 단계에서 만든 웹 앱 URL(https://script.google.com/...)을 넣어주세요!
+        // ⚠️ 아래 빈칸에 1단계에서 만든 웹 앱 URL을 넣어주세요!
+        const GAS_WEB_APP_URL = "https://script.google.com/macros/library/d/1dtK1QH-yvleeFXjCMmLdx3lVkD0JXQ9KyzjixeWcJQn3sSv7qapHzHoo/2";
         // ==========================================
-        const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxLgee7qbin4gNLniZH_3QyJIhONdD-sRJ_j5FfNbj3vDU9P_B9Hlb5SMkWnozaxdhc/exec";
-
 
         const TOTAL_QUESTIONS = 10;
         let cachedGradedData = [];
         
-        // 정답 설정 (배열로 여러 형태의 정답 처리 가능)
+        // 정답 설정
         const CORRECT_ANSWERS = [
             "바이올렛",
             "로지",
@@ -312,25 +436,45 @@
             "에워싸다"
         ];
 
+        // 초기화
         function init() {
             createStudentQuestions();
             displayAnswerList();
         }
 
-        // 모드 전환
-        function switchMode(mode) {
+        // 모드 전환 함수
+        function switchMode(mode, btnElement) {
+            // 선생님 모드로 진입하려 할 때 비밀번호 확인
+            if (mode === 'teacher') {
+                const password = prompt("선생님 모드 비밀번호를 입력하세요.\n(기본 비밀번호: 1234)");
+                if (password !== "1234") {
+                    alert("비밀번호가 일치하지 않습니다.");
+                    return; // 비밀번호 틀리면 중단
+                }
+            }
+
+            // 모든 화면 숨기기
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            // 모든 버튼 강조 색상 빼기
             document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
             
+            // 선택한 화면 표시
             document.getElementById(mode).classList.add('active');
-            event.target.classList.add('active');
+            
+            // 버튼을 클릭해서 전환한 경우 버튼 색상 켜기
+            if (btnElement) {
+                btnElement.classList.add('active');
+            } else if (mode === 'successScreen') {
+                // 제출 성공 화면일 때는 학생 모드 버튼 색상 유지
+                document.getElementById('btn-student').classList.add('active');
+            }
 
             if (mode === 'teacher') {
                 gradeAllStudents();
             }
         }
 
-        // 학생용 문제 입력칸 생성
+        // 학생용 문제 생성
         function createStudentQuestions() {
             const container = document.getElementById('questionContainer');
             container.innerHTML = '';
@@ -346,7 +490,7 @@
             }
         }
 
-        // 등록된 정답 목록 표시 (선생님 화면용)
+        // 정답 목록 표시
         function displayAnswerList() {
             const container = document.getElementById('answerDisplay');
             let html = '';
@@ -360,7 +504,7 @@
             container.innerHTML = html;
         }
 
-        // 정답 비교 (대소문자 무시)
+        // 정답 비교
         function compareAnswers(studentAnswer, correctAnswer) {
             if (!studentAnswer) return false;
             const student = studentAnswer.toString().trim();
@@ -372,9 +516,10 @@
             }
         }
 
+        // 학생 정답 제출
         async function submitStudentAnswers() {
             if (GAS_WEB_APP_URL.includes("여기에_주소를_붙여넣으세요")) {
-                alert("코드 상단의 GAS_WEB_APP_URL 변수에 복사해둔 구글 앱스 스크립트 주소를 넣어주세요!");
+                alert("Apps Script 웹 앱 URL이 설정되지 않았습니다. index.html 하단의 GAS_WEB_APP_URL 변수를 설정해주세요.");
                 return;
             }
 
@@ -407,21 +552,23 @@
             };
 
             try {
-                // Apps Script 웹 앱으로 데이터 POST 전송
+                // Apps Script 웹 앱으로 데이터 전송
                 await fetch(GAS_WEB_APP_URL, {
                     method: 'POST',
-                    mode: 'no-cors', // 구글 시트 연동 시 CORS 오류 방지용 옵션
+                    mode: 'no-cors', 
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
 
-                showMessage('studentMessage', `✅ ${name} 학생의 정답이 제출되었습니다!`, 'success');
-                setTimeout(() => {
-                    resetStudentForm();
-                }, 2000);
+                // 성공 시 "제출 완료" 화면으로 전환
+                switchMode('successScreen');
+                
+                // 학생 입력폼 비우기 (다음 테스트를 위해)
+                resetStudentForm();
+
             } catch (err) {
                 console.error(err);
-                showMessage('studentMessage', '제출 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.', 'error');
+                showMessage('studentMessage', '제출 중 오류가 발생했습니다. 다시 시도해주세요.', 'error');
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.innerText = '📤 정답 제출';
@@ -437,17 +584,16 @@
             document.getElementById('studentMessage').innerHTML = '';
         }
 
-        // 구글 시트에서 학생 데이터 불러와서 채점 실행
+        // 채점 실행 및 구글 시트 데이터 불러오기
         async function gradeAllStudents() {
             if (GAS_WEB_APP_URL.includes("여기에_주소를_붙여넣으세요")) {
-                showMessage('teacherMessage', '주소를 먼저 코드에 등록해주세요.', 'error');
+                showMessage('teacherMessage', 'GAS_WEB_APP_URL을 먼저 입력해주세요.', 'error');
                 return;
             }
 
             showMessage('teacherMessage', '구글 시트에서 제출 답안을 불러오는 중...', 'info');
 
             try {
-                // 구글 시트에서 데이터 가져오기
                 const response = await fetch(GAS_WEB_APP_URL);
                 const submissions = await response.json();
 
@@ -457,7 +603,7 @@
                     return;
                 }
 
-                // 채점 진행
+                // 채점
                 const graded = submissions.map(submission => {
                     let score = 0;
                     const details = [];
@@ -486,23 +632,23 @@
                     };
                 });
 
-                // 점수순 정렬 (동점이면 먼저 제출한 순)
+                // 점수순 정렬 (동점이면 시간순)
                 graded.sort((a, b) => {
                     if (a.score !== b.score) return b.score - a.score;
                     return new Date(a.timestamp) - new Date(b.timestamp);
                 });
 
                 cachedGradedData = graded;
-                showMessage('teacherMessage', `✅ 답안 불러오기 및 채점 완료! (총 ${submissions.length}명)`, 'success');
+                showMessage('teacherMessage', `✅ 최신 답안 채점이 완료되었습니다! (총 ${submissions.length}명)`, 'info');
                 displayResults(graded);
 
             } catch (err) {
                 console.error(err);
-                showMessage('teacherMessage', '구글 시트에서 데이터를 불러오는 중 오류가 발생했습니다.', 'error');
+                showMessage('teacherMessage', '데이터를 불러오는 중 오류가 발생했습니다.', 'error');
             }
         }
 
-        // 결과 테이블 렌더링
+        // 결과 화면 렌더링
         function displayResults(graded) {
             const container = document.getElementById('resultContainer');
             
@@ -573,7 +719,7 @@
             container.innerHTML = html;
         }
 
-        // 학생별 상세 보기 모달 창 띄우기
+        // 상세 보기 모달
         function showDetails(studentName) {
             const student = cachedGradedData.find(s => s.name === studentName);
             if (!student) return;
@@ -581,15 +727,15 @@
             let html = `<h3 style="margin-bottom: 10px; color: #333;">${studentName} 학생 상세 결과</h3>`;
             html += `<p style="margin-bottom: 15px; font-weight: 600; color: #5eb3f6;">총점: ${student.score} / ${TOTAL_QUESTIONS}점</p>`;
             html += `<table style="font-size: 13px; width: 100%; border-collapse: collapse;">`;
-            html += `<tr style="background: #e3f2fd;"><th style="padding: 8px; border: 1px solid #ddd;">문항</th><th style="padding: 8px; border: 1px solid #ddd;">학생 답</th><th style="padding: 8px; border: 1px solid #ddd;">정답</th><th style="padding: 8px; width: 50px; border: 1px solid #ddd;">채점</th></tr>`;
+            html += `<tr style="background: #e3f2fd;"><th style="padding: 8px;">문항</th><th style="padding: 8px;">학생 답</th><th style="padding: 8px;">정답</th><th style="padding: 8px; width: 50px;">채점</th></tr>`;
 
             student.details.forEach(d => {
                 html += `
                     <tr>
-                        <td style="padding: 8px; border: 1px solid #ddd; text-align: center; font-weight: 600;">${d.question}번</td>
-                        <td style="padding: 8px; border: 1px solid #ddd;">${d.student || '<span style="color:#aaa;">(공백)</span>'}</td>
-                        <td style="padding: 8px; border: 1px solid #ddd;">${d.correct}</td>
-                        <td style="padding: 8px; border: 1px solid #ddd; text-align: center;">${d.isCorrect ? '✅' : '❌'}</td>
+                        <td style="padding: 8px; text-align: center; font-weight: 600;">${d.question}번</td>
+                        <td style="padding: 8px;">${d.student || '<span style="color:#aaa;">(공백)</span>'}</td>
+                        <td style="padding: 8px;">${d.correct}</td>
+                        <td style="padding: 8px; text-align: center;">${d.isCorrect ? '✅' : '❌'}</td>
                     </tr>
                 `;
             });
@@ -600,25 +746,23 @@
             document.getElementById('detailModal').style.display = 'flex';
         }
 
-        // 모달 창 닫기
-        function closeModal(event) {
-            if (event && event.target.className !== 'modal') return;
+        function closeModal() {
             document.getElementById('detailModal').style.display = 'none';
         }
 
-        // 알림 메시지 띄우기
+        // 메시지 표시
         function showMessage(elementId, message, type) {
             const element = document.getElementById(elementId);
             element.innerHTML = `<div class="message ${type}">${message}</div>`;
             
-            if (type === 'success') {
+            if (type === 'info') {
                 setTimeout(() => {
                     element.innerHTML = '';
                 }, 3000);
             }
         }
 
-        // 구글 시트 데이터 초기화 (모두 삭제)
+        // 모든 데이터 초기화 (구글 시트 비우기)
         async function clearAllData() {
             if (!confirm('정말로 구글 시트의 모든 학생 제출 데이터를 삭제하시겠습니까?')) {
                 return;
@@ -632,12 +776,12 @@
                     body: JSON.stringify({ action: 'clear' })
                 });
 
-                showMessage('teacherMessage', '✅ 구글 시트 데이터가 초기화되었습니다.', 'success');
+                showMessage('teacherMessage', '✅ 모든 데이터가 삭제되었습니다.', 'info');
                 setTimeout(() => {
                     gradeAllStudents();
                 }, 1000);
             } catch (err) {
-                showMessage('teacherMessage', '초기화에 실패했습니다.', 'error');
+                showMessage('teacherMessage', '삭제에 실패했습니다.', 'error');
             }
         }
 
