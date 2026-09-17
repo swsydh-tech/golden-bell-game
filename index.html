@@ -446,8 +446,8 @@
         function switchMode(mode, btnElement) {
             // 선생님 모드로 진입하려 할 때 비밀번호 확인
             if (mode === 'teacher') {
-                const password = prompt("선생님 모드 비밀번호를 입력하세요.\n(기본 비밀번호: 1234)");
-                if (password !== "1234") {
+                const password = prompt("선생님 모드 비밀번호를 입력하세요.");
+                if (password !== "9980") {
                     alert("비밀번호가 일치하지 않습니다.");
                     return; // 비밀번호 틀리면 중단
                 }
